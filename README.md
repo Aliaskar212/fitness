@@ -1,1 +1,595 @@
-# fitness
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AliPower - Фитнес клуб премиум класса</title>
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .logo span {
+            color: #fdbb2d;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #fdbb2d;
+        }
+        
+        /* Герой секция */
+        .hero {
+            height: 80vh;
+            background: url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #fdbb2d;
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #f8a90a;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* О нас */
+        .about {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #1a2a6c;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Услуги */
+        .services {
+            padding: 80px 0;
+            background-color: #f1f1f1;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: #1a2a6c;
+        }
+        
+        /* Тренеры */
+        .trainers {
+            padding: 80px 0;
+        }
+        
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .trainer-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .trainer-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .trainer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .trainer-info {
+            padding: 20px;
+        }
+        
+        .trainer-info h3 {
+            margin-bottom: 5px;
+            color: #1a2a6c;
+        }
+        
+        .trainer-info p {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #1a2a6c;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #fdbb2d;
+        }
+        
+        /* Контакты */
+        .contact {
+            padding: 80px 0;
+            background-color: #f1f1f1;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: #1a2a6c;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #fdbb2d;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Подвал */
+        footer {
+            background: #1a2a6c;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: #fdbb2d;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #fdbb2d;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Ali<span>Power</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#trainers">Тренеры</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Герой секция -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Преобрази свое тело</h1>
+                <p>Присоединяйтесь к лучшему фитнес-клубу в городе и начните свой путь к идеальной форме уже сегодня!</p>
+                <a href="#contact" class="btn">Записаться</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">О нашем клубе</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    </p>Фитнес-клуб AliPower в Таразе — это место, где каждый найдет свою мотивацию и силы для достижения целей!</p>
+                    </p>Мы создали пространство, которое сочетает в себе высококачественное оборудование, профессиональных тренеров и дружелюбную атмосферу.<p>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Фитнес клуб PowerGym">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://avatars.mds.yandex.net/i?id=7a0f7b78ad6c903431ad7a20e7627495_l-5219777-images-thumbs&n=13" alt="Персональные тренировки">
+                    </div>
+                    <div class="service-content">
+                        <h3>Персональные тренировки</h3>
+                        <p>Индивидуальный подход к каждому клиенту с учетом его целей, физической подготовки и состояния здоровья.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://cdn10.phillymag.com/wp-content/uploads/sites/3/2018/07/indoor-cycling-istock-Bojan89-900x600.jpg" alt="Групповые занятия">
+                    </div>
+                    <div class="service-content">
+                        <h3>Групповые занятия</h3>
+                        <p>Разнообразные программы групповых тренировок: йога, пилатес, функциональный тренинг, кроссфит и многое другое.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://fb.ru/media/i/2/9/4/7/6/2/8/i/2947628.jpg" alt="Кардио зона">
+                    </div>
+                    <div class="service-content">
+                        <h3>Кардио зона</h3>
+                        <p>Современные кардиотренажеры для эффективных тренировок сердечно-сосудистой системы и сжигания жира.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Тренеры -->
+    <section class="trainers" id="trainers">
+        <div class="container">
+            <h2 class="section-title">Наши тренеры</h2>
+            <div class="trainers-grid">
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="https://avatars.mds.yandex.net/i?id=c025a363ce8a900ab1bd3a485f4ef4bc_l-4231455-images-thumbs&n=13" alt="Алексей Петров">
+                    </div>
+                    <div class="trainer-info">
+                        <h3>Алихан</h3>
+                        <p>тренер</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мария Иванова">
+                    </div>
+                    <div class="trainer-info">
+                        <h3>Санжар</h3>
+                        <p>Инструктор по йоге</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="https://sun6-23.userapi.com/impg/8W96lkydClmZAq0gg6pUrCwVkXbOBd4heyVIZw/iKOA9AOausU.jpg?size=603x604&quality=95&sign=51d1c32d63db600fee18c1a83fe9bf7c&type=album" alt="Еркебулан">
+                    </div>
+                    <div class="trainer-info">
+                        <h3>Еркебулан</h3>
+                        <p>Тренер по бегу</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="https://sportishka.com/uploads/posts/2022-03/1648489751_57-sportishka-com-p-zagorulko-trener-sport-krasivie-foto-63.jpg" alt="Галымжан">
+                    </div>
+                    <div class="trainer-info">
+                        <h3>Галымжан</h3>
+                        <p>Инструктор по тяге</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Наши контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Тараз, ул. Домалак ана, 221</p>
+                    <p><i class="fas fa-phone"></i> +7 (778) 711-79-02</p>
+                    <p><i class="fas fa-envelope"></i> aliaskar2012@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 7:00 - 23:00, Сб-Вс: 8:00 - 22:00</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Записаться на тренировку</h3>
+                    <form>
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="tel" placeholder="Ваш телефон" required>
+                        <input type="email" placeholder="Ваш email">
+                        <textarea placeholder="Ваше сообщение"></textarea>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>AliPower</h3>
+                    <p>Лучший фитнес-клуб в городе с современным оборудованием и профессиональными тренерами.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Меню</h3>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#trainers">Тренеры</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#">Персональные тренировки</a></li>
+                        <li><a href="#">Групповые занятия</a></li>
+                        <li><a href="#">Кардио зона</a></li>
+                        <li><a href="#">Тренажерный зал</a></li>
+                        <li><a href="#">Фитнес-тестирование</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="tel:+77787117902">+7 (778) 711-79-02</a></li>
+                        <li><a href="mailto:aliaskar2626@gmail.com">aliaskar2012@gmail.com</a></li>
+                        <li>г. Тараз, ул. Домалак ана, 221</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 AliPower. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome для иконок -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
